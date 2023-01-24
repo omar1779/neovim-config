@@ -12,12 +12,7 @@ Plug 'jiangmiao/auto-pairs'		"autocompletado de llaves, corchetes, etc.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}	"autocompletado inteligente
 Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
 Plug 'sheerun/vim-polyglot' 		"resaltado de sintaxis multiple
-Plug 'windwp/nvim-autopairs'
-Plug 'windwp/nvim-autopairs'
-Plug 'alvan/vim-closetag'     "close tag jsx-html-tsx
-
 call plug#end() 			"cerramos el llamado de los plugins
-
 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 "CONFIGURACIONES BASICAS 
@@ -29,7 +24,7 @@ set noshowmode				"me deja de mostrar el modo en el que estamos 'normal, insert,
 syntax enable 				"activa el coloreado de sintaxis en algunos tipos de archivos como html, c, c++
 set encoding=utf-8 			"permite setear la codificación de archivos para aceptar caracteres especiales
 set sw=2				"la indentación genera 4 espacios			"el texto en una linea no baja a la siguiente, solo continua en la misma hasta el infinito.
-" set nowrap noswapfile				"para evitar el mensaje que sale al abrir algunos archivos sobre swap.
+set nowrap noswapfile				"para evitar el mensaje que sale al abrir algunos archivos sobre swap.
 set clipboard=unnamed			"para poder utilizar el portapapeles del sistema operativo 'esto permite poder copiar y pegar desde cualquier parte a nvim y viceversa.	
 set ruler
 set showcmd
@@ -43,7 +38,7 @@ colorscheme tokyonight-storm	"activar el tema onedark
 "configuracion de emmet-vim
 let g:user_emmet_leader_key=',' 	"mapeando la tecla lider por una coma, con esto se completa los tag con doble coma.
 "configuracion autopairs
-
+nnoremap <silent> <C-S> :update<CR>
 "configuracion de vim-airline
 let g:airline#extensions#tabline#enabled = 1	"muestra la linea de pestaña en la que estamos buffer
 let g:airline#extensions#tabline#formatter = 'unique_tail'	"muestra solo el nombre del archivo que estamos modificando
@@ -190,11 +185,6 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
-
-" Use CTRL-S for selections ranges
-" Requires 'textDocument/selectionRange' support of language server
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer
 command! -nargs=0 Format :call CocActionAsync('format')
